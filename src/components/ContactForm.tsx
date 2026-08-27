@@ -20,7 +20,9 @@ import {
   HUZAIFA_WHATSAPP_NUMBER,
   HUZAIFA_WHATSAPP_DISPLAY_NUMBER,
   getActiveWhatsAppNumber,
-  getActiveWhatsAppDisplayNumber
+  getActiveWhatsAppDisplayNumber,
+  getActiveOfficialEmail,
+  OFFICIAL_EMAIL
 } from '../config';
 import { saveLead } from '../utils/adminStorage';
 
@@ -38,7 +40,6 @@ const SERVICE_OPTIONS = [
   'Other'
 ];
 
-const OFFICIAL_EMAIL = 'contact@metaresolve.agency';
 const OFFICIAL_LOCATION = 'Pakistan';
 
 const getInitialService = (plat?: PlatformType | string): string => {
@@ -86,6 +87,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialPlatform = 'ins
 
   const activeWhatsAppNumber = getActiveWhatsAppNumber() || ADIL_WHATSAPP_NUMBER;
   const activeWhatsAppDisplay = getActiveWhatsAppDisplayNumber();
+  const activeOfficialEmail = getActiveOfficialEmail() || OFFICIAL_EMAIL;
 
   const validate = (): boolean => {
     const errs: Record<string, string> = {};
@@ -279,7 +281,7 @@ I would like to discuss my case with META RESOLVE.`;
 
                   {/* Email Row */}
                   <a
-                    href={`mailto:${OFFICIAL_EMAIL}`}
+                    href={`mailto:${activeOfficialEmail}`}
                     className="flex items-center gap-4 p-3.5 -mx-3.5 rounded-xl transition-all duration-200 hover:bg-white/[0.03] group cursor-pointer"
                     id="contact-info-email"
                   >
@@ -290,8 +292,8 @@ I would like to discuss my case with META RESOLVE.`;
                       <div className="text-[11px] font-mono uppercase tracking-wider text-[#8C9891]">
                         Email
                       </div>
-                      <div className="text-base sm:text-lg font-semibold text-white group-hover:text-[#B7FF35] transition-colors">
-                        {OFFICIAL_EMAIL}
+                      <div className="text-base sm:text-lg font-semibold text-white group-hover:text-[#B7FF35] transition-colors font-mono">
+                        {activeOfficialEmail}
                       </div>
                     </div>
                   </a>

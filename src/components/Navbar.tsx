@@ -21,6 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAssessment, onScrollToSect
   }, []);
 
   const navLinks = [
+    { label: 'About', target: 'about' },
     { label: 'Services', target: 'services' },
     { label: 'Specialists', target: 'team' },
     { label: 'Why Us', target: 'why-us' },

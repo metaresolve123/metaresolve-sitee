@@ -12,6 +12,7 @@ export const DEFAULT_ADMIN_CREDENTIALS: AdminCredentials = {
 };
 
 export const DEFAULT_SITE_CONFIG: SiteConfig = {
+  officialEmail: 'metaresolveagency@proton.me',
   whatsappNumber: '923372430274',
   whatsappDisplayNumber: '+92 337 2430274',
   founderName: 'Adil Afridi',

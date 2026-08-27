@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StatsBar } from './components/StatsBar';
+import { AboutSection } from './components/AboutSection';
 import { ServicesGrid } from './components/ServicesGrid';
 import { TeamSection } from './components/TeamSection';
 import { PricingSection } from './components/PricingSection';
@@ -82,12 +83,6 @@ export default function App() {
     }
   };
 
-  const handleOpenAdmin = () => {
-    window.location.hash = 'admin';
-    setIsAdminView(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const handleExitAdmin = () => {
     window.location.hash = '';
     setIsAdminView(false);
@@ -149,6 +144,9 @@ export default function App() {
         {/* 4-Stat Credibility Bar */}
         <StatsBar />
 
+        {/* Section 1: About META RESOLVE */}
+        <AboutSection onContactClick={() => scrollToSection('contact')} />
+
         {/* Section 2: Services Grid (Every platform. Every ban type. Handled.) */}
         <ServicesGrid onSelectPlatformForQuote={handleSelectPlatformForQuote} />
 
@@ -181,7 +179,6 @@ export default function App() {
       <Footer
         onScrollToSection={scrollToSection}
         onSelectPlatform={handleSelectPlatformForQuote}
-        onOpenAdmin={handleOpenAdmin}
       />
 
       {/* Floating Emergency & Feasibility Assessment Bar */}

@@ -1,11 +1,13 @@
 import React from 'react';
-import { ShieldCheck, ArrowUpRight, Lock, Twitter, Linkedin, MessageSquare, Instagram, Github, ArrowRight, MessageCircle } from 'lucide-react';
+import { ShieldCheck, ArrowUpRight, Twitter, Linkedin, MessageSquare, Instagram, Github, ArrowRight, MessageCircle, Mail } from 'lucide-react';
 import { PlatformType } from '../types';
 import {
   ADIL_WHATSAPP_NUMBER,
   ADIL_WHATSAPP_DISPLAY_NUMBER,
   HUZAIFA_WHATSAPP_NUMBER,
   HUZAIFA_WHATSAPP_DISPLAY_NUMBER,
+  OFFICIAL_EMAIL,
+  OFFICIAL_EMAIL_MAILTO,
   getWhatsAppUrl,
   getHuzaifaWhatsAppUrl
 } from '../config';
@@ -13,10 +15,9 @@ import {
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
   onSelectPlatform: (platform: PlatformType) => void;
-  onOpenAdmin?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onScrollToSection, onSelectPlatform, onOpenAdmin }) => {
+export const Footer: React.FC<FooterProps> = ({ onScrollToSection, onSelectPlatform }) => {
   return (
     <footer className="bg-[#060909] border-t border-white/[0.06] pt-16 pb-12 relative z-10" id="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,6 +74,16 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, onSelectPlatf
                   <span className="truncate">Huzaifa (Co-Founder)</span>
                 </a>
               </div>
+
+              {/* Official Email Link in Footer */}
+              <a
+                href={OFFICIAL_EMAIL_MAILTO}
+                className="w-full py-2 px-2.5 rounded-lg bg-[#0C1211] hover:bg-[#14201C] text-[#A0AAA3] hover:text-[#B7FF35] border border-white/[0.06] hover:border-[#B7FF35]/30 text-[11px] font-mono flex items-center justify-center gap-2 transition-all cursor-pointer"
+                id="footer-email-link"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#B7FF35] shrink-0" />
+                <span className="truncate font-semibold">{OFFICIAL_EMAIL}</span>
+              </a>
             </div>
 
             <div className="flex items-center gap-3 pt-1 text-[#68736D]">
@@ -118,6 +129,22 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, onSelectPlatf
               Company
             </h4>
             <ul className="space-y-2.5 text-xs text-[#A0AAA3]">
+              <li>
+                <button
+                  onClick={() => onScrollToSection('about')}
+                  className="hover:text-[#B7FF35] transition-colors cursor-pointer"
+                >
+                  About META RESOLVE
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onScrollToSection('services')}
+                  className="hover:text-[#B7FF35] transition-colors cursor-pointer"
+                >
+                  Recovery Services
+                </button>
+              </li>
               <li>
                 <button
                   onClick={() => onScrollToSection('team')}
@@ -195,21 +222,10 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, onSelectPlatf
                   Platform Disclaimers
                 </span>
               </li>
-              <li className="pt-1">
-                <button
-                  onClick={() => {
-                    if (onOpenAdmin) {
-                      onOpenAdmin();
-                    } else {
-                      window.location.hash = 'admin';
-                    }
-                  }}
-                  className="inline-flex items-center gap-1.5 text-[#8C9891] hover:text-[#B7FF35] transition-colors font-mono cursor-pointer"
-                  id="footer-admin-portal-link"
-                >
-                  <Lock className="w-3 h-3 text-[#B7FF35]" />
-                  <span>Admin Portal Access</span>
-                </button>
+              <li>
+                <span className="hover:text-[#F2F5EF] transition-colors cursor-pointer">
+                  Security Forensics Protocol
+                </span>
               </li>
             </ul>
           </div>

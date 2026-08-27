@@ -827,6 +827,26 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onExitAdmin }) =
               )}
 
               <form onSubmit={handleSaveSiteConfig} className="space-y-6">
+                {/* Official Contact Email */}
+                <div>
+                  <label className="block text-xs font-mono font-bold uppercase text-[#F2F5EF] mb-2">
+                    Official Contact Email
+                  </label>
+                  <input
+                    type="email"
+                    value={siteConfig.officialEmail || 'metaresolveagency@proton.me'}
+                    onChange={(e) =>
+                      setSiteConfig({ ...siteConfig, officialEmail: e.target.value.trim() })
+                    }
+                    placeholder="metaresolveagency@proton.me"
+                    required
+                    className="w-full px-4 py-3 bg-[#090D0D] border border-white/10 focus:border-[#B7FF35] rounded-xl text-sm font-mono text-[#F2F5EF] outline-none"
+                  />
+                  <p className="text-[11px] text-[#8C9891] mt-1.5">
+                    Official inbox for case submissions and client correspondence (<code className="text-[#B7FF35]">metaresolveagency@proton.me</code>).
+                  </p>
+                </div>
+
                 {/* WhatsApp Digits */}
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase text-[#F2F5EF] mb-2">

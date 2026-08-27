@@ -1,5 +1,9 @@
 import { getSiteConfig } from './utils/adminStorage';
 
+// Official Contact Email
+export const OFFICIAL_EMAIL = 'metaresolveagency@proton.me';
+export const OFFICIAL_EMAIL_MAILTO = 'mailto:metaresolveagency@proton.me';
+
 // Centralized WhatsApp Numbers
 export const ADIL_WHATSAPP_NUMBER = "923372430274";
 export const ADIL_WHATSAPP_DISPLAY_NUMBER = "+92 337 2430274";
@@ -13,6 +17,19 @@ export const WHATSAPP_DISPLAY_NUMBER = ADIL_WHATSAPP_DISPLAY_NUMBER;
 
 export const WHATSAPP_DEFAULT_MESSAGE = "Hello Adil, I would like to discuss an account recovery issue with META RESOLVE.";
 export const HUZAIFA_DEFAULT_MESSAGE = "Hello Huzaifa, I would like to discuss an account recovery case with META RESOLVE.";
+
+export const getActiveOfficialEmail = (): string => {
+  try {
+    const config = getSiteConfig();
+    return config.officialEmail || OFFICIAL_EMAIL;
+  } catch (e) {
+    return OFFICIAL_EMAIL;
+  }
+};
+
+export const getActiveOfficialEmailMailto = (): string => {
+  return `mailto:${getActiveOfficialEmail()}`;
+};
 
 export const getActiveWhatsAppNumber = (): string => {
   try {

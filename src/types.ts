@@ -104,6 +104,7 @@ export interface LeadRecord {
 }
 
 export interface SiteConfig {
+  officialEmail?: string;
   whatsappNumber: string;
   whatsappDisplayNumber: string;
   founderName: string;
